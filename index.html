@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saqlain Shadab | Data Analyst Portfolio</title>
+
+<style>
+/* ================= ROOT ================= */
+:root {
+  --bg-primary: #000000;
+  --bg-secondary: #111111;
+  --accent: #F5E6A8;
+  --text-main: #F5F5F5;
+  --text-muted: #B3B3B3;
+  --border-soft: #2A2A2A;
+}
+
+/* ================= GLOBAL ================= */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-main);
+  padding-top: 70px;
+}
+
+/* ================= SECTION END DIVIDER ================= */
+.section-divider {
+  width: 100%;
+  height: 3px; /* thickness */
+  margin: 80px auto 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(212, 175, 55, 0.8),
+    transparent
+  );
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.9);
+  padding: 5px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,215,0,0.15);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #F5E6A8; /* softer gold */
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-left: 140px; 
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin-right: 160px;
+}
+
+.nav-links a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: #F5E6A8;
+}
+
+/* ================= HOME ================= */
+.home-section {
+  position: relative;
+  text-align: center;
+  padding: 70px 20px;
+  overflow: hidden;
+}
+
+.home-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 20% 30%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 80% 40%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2px 2px at 50% 50%, rgba(212,175,55,0.5), transparent);
+  background-size: 160px 160px;
+  animation: starsMove 45s linear infinite;
+  opacity: 0.55;
+}
+
+.home-section > * {
+  position: relative;
+  z-index: 1;
+  margin-top:20px;
+}
+
+@keyframes starsMove {
+  from { background-position: 0 0; }
+  to { background-position: -1000px 1000px; }
+}
+
+.name {
+  font-size: 45px;
+  margin-bottom: 30px;
+}
+
+.description {
+  font-size: 18px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.home-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0 auto 30px auto;
+}
+
+.home-icons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  text-decoration: none;
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  box-sizing: border-box;
+  transform: translateX(-14px);
+}
+
+.home-icons a img,
+.home-icons a svg {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.email-icon svg {
+  transform: rotate(140deg);
+}
+
+.resume-btn {
+  background: #F5E6A8;
+  color: #000;
+  padding: 12px 26px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transform: translateX(-20px);
+}
+
+.resume-btn:hover {
+  background: #fff;
+}
+
+/* ================= SECTION TITLE ================= */
+.section-title {
+  position: relative;
+  display: inline-block;
+  font-size: 32px;
+  color: #E6C87A;
+  margin-bottom: 60px;
+}
+
+.section-title::before,
+.section-title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 70px;
+  height: 2px;
+  background: linear-gradient(to right, rgba(212,175,55,0.9), transparent);
+}
+
+.section-title::before {
+  right: 100%;
+  margin-right: 15px;
+}
+
+.section-title::after {
+  left: 100%;
+  margin-left: 15px;
+}
+
+/* ================= SKILLS ================= */
+.skills-section {
+  background: var(--bg-secondary);
+  padding: -20px 20px;
+  text-align: center;
+}
+
+.skills-section .section-title {
+  font-size: 2.2rem;
+  color: var(--accent);
+  margin-bottom: 40px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.skill-card {
+  background: transparent;
+  border: none;
+  padding: 0;
+  text-align: center;
+}
+
+.skill-card img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  background: transparent;
+  padding: 0;
+  filter: none;
+}
+
+.skill-card p {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #dcdcdc;
+}
+
+.skills-grid {
+  position: relative;
+}
+
+.skill-card {
+  position: relative;
+}
+
+.skill-card::after {
+  content: "";
+  position: absolute;
+  right: -17px;
+  top: 15%;
+  width: 1px;
+  height: 70%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ================= PROJECTS ================= */
+.projects-section {
+  padding: 10px 200px;
+  text-align: center;
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-top: 15px;
+}
+
+.project-card {
+  background: #141414;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,215,0,0.15);
+  transition: 0.3s;
+  position: relative;
+  text-align: left;
+}
+
+.project-card .project-title {
+  text-align: center;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 30px rgba(212,175,55,0.25);
+}
+
+.project-title {
+  color: #E6C87A;
+  font-size: 20px;
+}
+
+.project-tags {
+  color: #CBB26A;
+  font-size: 14px;
+}
+
+.project-github {
+  position: absolute;
+  bottom: 16px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: none;
+  font-size: 0;
+}
+
+.project-github img {
+  width: 25px;
+  height: 25px;
+  filter:
+    brightness(0)
+    invert(1)
+    sepia(1)
+    saturate(450%)
+    hue-rotate(5deg);
+}
+
+/* ================= CONTACT ================= */
+.contact-section {
+  padding: 20px 100px;
+  text-align: center;
+}
+
+.contact-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translate(10px, -6px);
+}
+
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+  font-size: 16px;
+  color: #dcdcdc;
+  transform: translate(300px , -19px);
+}
+
+.contact-left strong {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.contact-row-item {
+  white-space: nowrap;
+}
+
+.home-icons a {
+  width: 50px;
+  height: 50px;
+}
+
+.home-icons a img,
+.home-icons a svg {
+  width: 40px;
+  height: 40px;
+}
+
+.home-icons {
+  margin-left: 12px;
+  margin-top: -15px;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  background: #050505;
+  border-top: 1px solid rgba(255,215,0,0.15);
+  padding: 15px 0;
+  text-align: center;
+}
+
+.footer-heart {
+  color: #FFD700;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1200px) {
+  .projects-section { padding: 10px 100px; }
+  .contact-section { padding: 20px 50px; }
+  .navbar { padding: 15px 20px; }
+  .logo { margin-left: 20px; }
+  .nav-links { margin-right: 20px; gap: 16px; }
+}
+
+@media (max-width: 900px) {
+  .projects-section { padding: 10px 50px; }
+  .projects-container { grid-template-columns: 1fr; }
+  .contact-left { transform: translate(0, -10px); }
+  .contact-content { flex-direction: column; gap: 20px; }
+  .home-icons { margin-left: 0; margin-top: 0; justify-content: center; }
+}
+
+@media (max-width: 600px) {
+  .home-section { padding: 80px 10px; }
+  .name { font-size: 32px; }
+  .description { font-size: 16px; }
+  .section-title { font-size: 24px; }
+  .resume-btn { padding: 10px 20px; font-size: 14px; }
+  .skills-grid { gap: 20px; }
+  .skill-card img { width: 50px; height: 50px; }
+  .project-card { padding: 15px; }
+  .project-title { font-size: 18px; }
+  .project-tags { font-size: 12px; }
+  .project-github { right: 20px; bottom: 10px; }
+  .contact-left { font-size: 14px; transform: translate(0, -5px); }
+  .home-icons a { width: 45px; height: 45px; }
+  .home-icons a img, .home-icons a svg { width: 35px; height: 35px; }
+}
+
+@media (max-width: 400px) {
+  .navbar { flex-direction: column; gap: 10px; }
+  .nav-links { flex-wrap: wrap; justify-content: center; margin-right: 0; }
+  .logo { margin-left: 0; }
+}
+
+</style>
+</head>
+
+<body>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">DATA ANALYST</div>
+  <ul class="nav-links">
+    <li><a href="#home">HOME</a></li>
+    <li><a href="#skills">SKILLS</a></li>
+    <li><a href="#projects">PROJECTS</a></li>
+    <li><a href="#contact">CONTACT</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="home-section">
+  <h1 class="name">Saqlain Shadab Mohammed</h1>
+  <p class="description">
+    Data Analyst skilled in Python, SQL, Power BI & Excel.<br>
+    Turning data into insights and business value.
+  </p>
+
+  <div class="home-icons"> 
+    <a href="https://github.com/Saqlain-Shadab" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub">
+    </a>
+    <a href="https://www.linkedin.com/in/saqlain-shadab/" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn">
+    </a>
+    <a href="mailto:saqlain_shadab46@yahoo.co.uk" class = "email-icon" aria-label="Email">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 12L22 2L14 12L22 22L2 12Z" fill="black"/>
+      </svg>
+    </a>
+  </div>
+
+  <a href="https://drive.google.com/file/d/1y7AnjPLXLHSCKGZPfnVmXR0ry_KfHTFb/view?usp=sharing" class="resume-btn" target="_blank">RESUME</a>
+</section>
+<div class="section-divider"></div> 
+
+<!-- SKILLS -->
+<section id="skills" class="skills-section"> 
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-grid">
+    <!-- SKILL CARDS SAME AS ORIGINAL -->
+    <div class="skill-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python">
+      <p>Python</p>
+    </div>
+    <div class="skill-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" alt="SQL">
+      <p>SQL</p>
+    </div>
+    <div class="skill-card">
+      <img class="highlight" src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI">
+      <p>Power BI</p>
+    </div>
+    <div class="skill-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" alt="Excel">
+      <p>Excel</p>
+    </div>
+    <div class="skill-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub">
+      <p>GitHub</p>
+    </div>
+    <div class="skill-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg" alt="Jupyter Notebook">
+      <p>Jupyter Notebook</p>
+    </div>
+    <div class="skill-card">
+      <img class="highlight" src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="Anaconda Navigator">
+      <p>Anaconda Navigator</p>
+    </div>
+    <div class="skill-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968313.png" alt="PostgreSQL">
+      <p>PostgreSQL</p>
+    </div>
+    <div class="skill-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/906/906324.png" alt="VS Code">
+      <p>VS Code</p>
+    </div>
+    <div class="skill-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732226.png" alt="Word">
+      <p>Word</p>
+    </div>
+    <div class="skill-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732224.png" alt="PowerPoint">
+      <p>PowerPoint</p>
+    </div>
+    <div class="skill-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/12222/12222560.png" alt="ChatGPT">
+      <p>ChatGPT</p>
+    </div>
+  </div>
+<div class="section-divider"></div>
+</section>
+
+<!-- PROJECTS -->
+
+<!-- PROJECTS -->
+<section id="projects" class="projects-section">
+  <h2 class="section-title">Projects</h2>
+
+  <div class="projects-container">
+
+    <div class="project-card">
+      <h3 class="project-title">Customer Segmentation <span class="project-tags">(Python)</span></h3>
+      <p>This project uses RFM (Recency, Frequency, Monetary) analysis and K-Means clustering to segment customers based on purchasing behavior. The goal is to identify customer groups like high-value buyers, inactive customers, and average shoppers to support personalized marketing and business decision-making.</p>
+      <a class="project-github" href="https://github.com/Saqlain-Shadab/Customer-Segmentation" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png"> GitHub
+      </a>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">Churn Analysis <span class="project-tags">(Python)</span></h3>
+      <p>This project focuses on predicting customer churn for a subscription-based service using machine learning.
+The primary objective is to identify customers who are at risk of discontinuing their subscriptions.
+With accurate churn predictions, businesses can take proactive measures to retain valuable customers and reduce revenue loss.</p>
+      <a class="project-github" href="https://github.com/Saqlain-Shadab/Churn-Analysis" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png"> GitHub
+      </a>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">Advertisement Campaign <span class="project-tags">(Python)</span></h3>
+      <p>This project evaluates and optimizes digital advertising performance using A/B testing and regression analysis. It compares Facebook and Google AdWords in terms of clicks, conversions, and cost-efficiency, enabling data-driven decisions for strategic budget allocation.</p>
+      <a class="project-github" href="https://github.com/Saqlain-Shadab/A-B_TestingwithRegression" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png"> GitHub
+      </a>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">Zomato EDA <span class="project-tags">(Python)</span></h3>
+      <p>This project analyzes restaurant data from Zomato, focusing on ratings, geographic distribution, and online delivery trends. The goal is to explore how restaurant ratings vary by region, identify market trends, and assess online delivery adoption.</p>
+      <a class="project-github" href="https://github.com/Saqlain-Shadab/EDA_Zomato" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png"> GitHub
+      </a>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">Product Analysis <span class="project-tags">(Python | Power BI)</span></h3>
+      <p>The objective of this project is to analyze sales performance, profitability, and shipment data for Awesome Chocolates. The analysis will provide insights into total sales, profit margins, regional sales distribution, and individual sales personnel performance. The findings will help optimize sales strategies and improve business decision-making.
+
+</p>
+      <a class="project-github" href="https://github.com/Saqlain-Shadab/Product_Analysis" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png"> GitHub
+      </a>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">Hiring Analysis <span class="project-tags">(Excel)</span></h3>
+      <p>This project uses Microsoft Excel to analyze hiring data and uncover patterns in recruitment processes. The analysis includes metrics like candidate demographics, source performance, and department-wise recruitment trends. The goal is to assist HR teams and recruiters in identifying process bottlenecks, improving hiring efficiency, and making informed decisions.</p>
+      <a class="project-github" href="https://github.com/Saqlain-Shadab/Hiring-Analysis" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png"> GitHub
+      </a>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">IMDb Analysis <span class="project-tags">(Excel)</span></h3>
+      <p>This project uses Microsoft Excel to perform exploratory data analysis (EDA) on IMDb movie data. The analysis focuses on identifying patterns in genres, ratings, budgets and revenues to uncover trends in the film industry.</p>
+      <a class="project-github" href="https://github.com/Saqlain-Shadab/IDBM_Analysis" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png"> GitHub
+      </a>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">Market Basket Analysis <span class="project-tags">(Python | SQL)</span></h3>
+      <p>This project is Association Analysis with Apriori algorithm to identify frequent itemsets and generate association rules from transaction data. The goal is to help businesses understand customer buying habits and optimize product placement, bundling, and cross-selling strategies.</p>
+      <a class="project-github" href="https://github.com/Saqlain-Shadab/MarketBasketAnalysis" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png"> GitHub
+      </a>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">Predictive Churn Modeling <span class="project-tags">(Python | Power BI)</span></h3>
+      <p>This project objective is to build a predictive churn model to identify customers who are due to churn in business. Also identify the commercial impact of they have on the business and suggest actionable recommendations to overcome them.</p>
+      <a class="project-github" href="https://github.com/Saqlain-Shadab/Churn-Modelling-with-RFM-Analysis" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png"> GitHub
+      </a>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">Recommendation Engine <span class="project-tags">(SQL | Python)</span></h3>
+      <p>This project builds a personalized recommendation system using Collaborative Filtering with Implicit Feedback such as clicks, views, or purchases. The objective is to infer user preferences and suggest relevant items without relying on explicit ratings.</p>
+      <a class="project-github" href="https://github.com/Saqlain-Shadab/Recommendation-Engine-Tool" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png"> GitHub
+      </a>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">Startup Analysis <span class="project-tags">(Power BI)</span></h3>
+      <p>This Power BI dashboard provides an in-depth analysis of the Indian startup ecosystem. It covers funding patterns, investor involvement, startup growth, and market potential — helping stakeholders make informed, data-driven decisions.</p>
+      <a class="project-github" href="https://github.com/Saqlain-Shadab/Startup-Analysis" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png"> GitHub
+      </a>
+    </div>
+
+  </div>
+</section>
+
+  </div>
+ <div class="section-divider"></div> 
+</section>
+
+
+
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <h2 class="section-title">Contact</h2>
+  <div class="contact-content">
+    <div class="contact-left">
+      <div class="contact-row-item">
+        <strong>Email</strong>: saqlain_shadab46@yahoo.co.uk
+      </div>
+      <div class="contact-row-item">
+        <strong>Phone</strong>: +917013912290
+      </div>
+      <div class="contact-row-item">
+        <strong>Location</strong>: Hyderabad, India
+      </div>
+    </div>
+    <div class="contact-right home-icons">
+      <a href="https://github.com/Saqlain-Shadab" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub">
+      </a>
+      <a href="https://www.linkedin.com/in/saqlain-shadab/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn">
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  © <span id="year"></span> · Built with <span class="footer-heart">♥</span> by Saqlain Shadab Mohammed
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
